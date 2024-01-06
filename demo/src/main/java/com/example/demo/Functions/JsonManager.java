@@ -5,6 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.lang.Record;
 
 import com.example.demo.Classes.ListRecords;
 import com.example.demo.Classes.Records;
@@ -41,15 +42,22 @@ public class JsonManager {
         }
     }
 
-    // this is returning an exception
+    
+
+    // this is returning an exception - TAKE A HASHPMAP AND SAVE IT IN A JSON FILE 
     public void writetoJson(HashMap<String, ArrayList<Records>> map) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         try (FileWriter writer = new FileWriter("demo/src/main/java/com/example/demo/Files/MsCode_json.json")) {
             gson.toJson(map, writer);
+            writer.flush();
+            writer.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+
+
 
 
     
